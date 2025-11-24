@@ -9,7 +9,7 @@
   --font-size-sm: 14px;
 
   --primary-color: #1D2F1D;
-  --secondary-color: #406343;
+  --secondary-color: #a5c684;
   --text-color: #A5C684;
   --card-background: #e8ede3;
 }
@@ -17,6 +17,8 @@
 @layer base {
   body {
     font-family: var(--font-rethink-sans), sans-serif;
+    font-size: var(--font-size-base);
+    color: var(--text-color);
   }
 
   h1, h2, h3 {
@@ -35,6 +37,11 @@
 
   h3 {
     font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
     margin-bottom: 0.5rem;
   }
 }

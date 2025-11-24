@@ -13,6 +13,7 @@ export default function Navbar() {
                     <Link href="/coffee-process" className="hover:no-underline hover:text-(--secondary-color)">Process</Link>
                     <Link href="/shop/cart" className="hover:no-underline hover:text-(--secondary-color)">Carrito</Link>
                     <Link href="/location" className="hover:no-underline hover:text-(--secondary-color)">Sucursales</Link>
+                    <Link href="/shop" className="hover:no-underline hover:text-(--secondary-color)">Tienda</Link>
                 </div>
             </nav>
         </div>
