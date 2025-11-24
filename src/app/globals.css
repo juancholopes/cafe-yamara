@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+:root {
+  --font-rethink-sans: 'Rethink Sans', sans-serif;
+  --font-yeseva-one: 'Yeseva One', serif;
+
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-sm: 14px;
+
+  --primary-color: #1D2F1D;
+  --secondary-color: #406343;
+  --text-color: #A5C684;
+  --card-background: #e8ede3;
+}
+
 @layer base {
   body {
     font-family: var(--font-rethink-sans), sans-serif;
@@ -7,5 +21,20 @@
 
   h1, h2, h3 {
     font-family: var(--font-yeseva-one), serif;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
   }
 }

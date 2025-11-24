@@ -20,17 +20,48 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## Arquitectura del Proyecto
 
-To learn more about Next.js, take a look at the following resources:
+Este proyecto esta construido sobre Next.js utilizando el App Router y TypeScript. A continuacion se detalla la estructura y las tecnologias principales.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Tecnologias Principales
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Framework**: Next.js (App Router)
+- **Lenguaje**: TypeScript
+- **Estilos**: Tailwind CSS
+- **Base de Datos y Autenticacion**: Supabase
+- **Estado Global**: Zustand
+- **Pagos**: Stripe
+- **Fuentes**: next/font (Rethink Sans, Yeseva One)
 
-## Deploy on Vercel
+### Estructura de Directorios
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+El codigo fuente se encuentra en el directorio `src/` y sigue una arquitectura modular organizada por responsabilidades:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **app/**: Contiene las rutas de la aplicacion y layouts. Se utilizan grupos de rutas para separar contextos logicos:
+    - `(public)`: Paginas accesibles al publico general (Tienda, Inicio, Ubicacion).
+    - `(admin)`: Panel de administracion y gestion de productos.
+    - `(auth)`: Rutas de autenticacion (Login, Registro).
+    - `api/`: Endpoints de API del servidor (ej. Webhooks de Stripe).
+
+- **components/**: Componentes de React divididos por su nivel de abstraccion:
+    - `ui/`: Componentes base reutilizables y genericos sin logica de negocio especifica (Botones, Cards).
+    - `features/`: Componentes acoplados a la logica de negocio (Carrito de compras, Mapa de finca, Galeria).
+    - `layout/`: Componentes estructurales globales (Navbar, Footer).
+
+- **lib/**: Configuraciones de librerias externas y utilidades transversales:
+    - Configuracion de clientes de Supabase (Cliente y Servidor).
+    - Configuracion del SDK de Stripe.
+    - Funciones de utilidad generales (`utils.ts`).
+
+- **services/**: Capa de servicios para la logica de acceso a datos. Esta capa abstrae las llamadas a la base de datos o APIs externas, separando la logica de datos de la interfaz de usuario (ej. `products.service.ts`, `auth.service.ts`).
+
+- **store/**: Manejo del estado global del lado del cliente (ej. logica del carrito de compras) utilizando Zustand.
+
+- **types/**: Definiciones de tipos TypeScript manuales e interfaces generadas automaticamente por Supabase.
+
+### Decisiones de Diseño
+
+1. **Separacion de Responsabilidades**: La logica de negocio compleja se delega a la carpeta `services/` o `store/`, manteniendo los componentes de UI enfocados en la presentacion.
+2. **Server vs Client Components**: Se prioriza el uso de Server Components para el renderizado inicial y SEO, utilizando Client Components (`use client`) solo cuando se requiere interactividad o estado del navegador.
+3. **Estilos Globales**: Se utiliza Tailwind CSS configurado en `globals.css` para mantener un sistema de diseño consistente y evitar conflictos entre estilos locales de componentes.
