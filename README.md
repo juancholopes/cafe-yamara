@@ -22,6 +22,8 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Arquitectura del Proyecto
 
+> **Nota:** Para una documentación detallada de la arquitectura, diagramas de flujo, modelo de datos y trazabilidad de requerimientos, consulta el archivo [ARCHITECTURE.md](./ARCHITECTURE.md).
+
 Este proyecto esta construido sobre Next.js utilizando el App Router y TypeScript. A continuacion se detalla la estructura y las tecnologias principales.
 
 ### Tecnologias Principales
