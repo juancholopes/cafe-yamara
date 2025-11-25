@@ -36,7 +36,7 @@ export default function ProductCard({
         <h3 className="text-3xl mb-4">{title}</h3>
 
         {/* Separator */}
-        <div className="h-px bg-(--primary-color) w-full mb-4 opacity-30"></div>
+        <div className="h-0.5 bg-(--primary-color) w-full mb-4 "></div>
 
         {/* Cup Profile */}
         <div className="mb-4">
@@ -49,7 +49,7 @@ export default function ProductCard({
         </div>
 
         {/* Separator */}
-        <div className="h-px bg-(--primary-color) w-full mb-4 opacity-30"></div>
+        <div className="h-0.5 bg-(--primary-color) w-full mb-4 opacity-100"></div>
 
         {/* Tasting Notes */}
         <div>
