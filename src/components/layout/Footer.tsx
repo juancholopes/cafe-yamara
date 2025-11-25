@@ -10,9 +10,15 @@ export default function Footer() {
          <ul className="list-none text-center">
           <div className="font-bold flex flex-col justify-center items-center"><p>Social Media</p></div>
             <div className="flex justify-center gap-5 p-2">
-            <Instagram className="inline-block" size={24} />
-            <Linkedin className="inline-block" size={24} />
-            <Facebook className="inline-block" size={24} />
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+              <Instagram size={24} />
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+              <Linkedin size={24} />
+            </a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+              <Facebook size={24} />
+            </a>
             </div>
           </ul>
         </div>
