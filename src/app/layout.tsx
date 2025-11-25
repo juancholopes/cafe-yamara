@@ -32,7 +32,7 @@ export default function RootLayout({
     <html lang="es" className={`${rethinkSans.variable} ${yesevaOne.variable}`}>
       <body className="flex flex-col min-h-screen">
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 flex flex-col mt-16">{children}</main>
         <Footer />
       </body>
     </html>

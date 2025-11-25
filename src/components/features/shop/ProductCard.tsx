@@ -17,9 +17,9 @@ export default function ProductCard({
   imageAlt,
 }: ProductCardProps) {
   return (
-    <Card className="p-0 m-0 bg-transparent">
+    <Card className="p-0 m-0 bg-transparent w-[300px] min-h-[600px] flex flex-col">
       {/* Image Container - Top Half */}
-      <div className="bg-(--secondary-color) p-8 flex justify-center items-center relative h-[300px] w-full">
+      <div className="bg-(--secondary-color) p-8 flex justify-center items-center relative h-[300px] w-full shrink-0">
         <div className="relative w-full h-full shadow-2xl transform hover:scale-105 transition-transform duration-300">
              <Image
                 src={imageUrl}
@@ -31,7 +31,7 @@ export default function ProductCard({
       </div>
 
       {/* Description Container - Bottom Half */}
-      <div className="bg-(--card-background) p-8 text-(--primary-color)">
+      <div className="bg-(--card-background) p-8 text-(--primary-color) flex-1 flex flex-col">
         {/* Title */}
         <h3 className="text-3xl mb-4">{title}</h3>
 
