@@ -8,7 +8,7 @@ export default function AboutPage() {
       {/* Contenido */}
       <div className=" flex flex-col items-center justify-center min-h-screen p-6 bg-(--primary-color) w-full">
         <h1 className="text-5xl md:text-7xl font-bold mb-8 text-(--secondary-color) drop-shadow-lg">Sobre nosotros</h1>
-        <Button >Conócenos</Button>
+        {/* <Button >Conócenos</Button> */}
       </div>
     </section>
   );

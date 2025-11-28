@@ -30,7 +30,7 @@ export default function Navbar() {
     return (
         <div className={`fixed top-0 left-0 w-full z-50 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}> 
             <nav className="bg-(--primary-color) text-white p-6 flex justify-center items-center">
-                <div className=" flex items-center justify-center gap-8 text-lg font-medium text-(--text-color) underline-offset-auto text-bold">
+                <div className=" flex items-center justify-center gap-8 text-2xl text-(--text-color) underline-offset-auto text-bold">
                     <Link href="/about" className="hover:no-underline hover:text-(--secondary-color)">Nosotros</Link>
                     <Link href="/coffee-process" className="hover:no-underline hover:text-(--secondary-color)">Process</Link>
                     <Link href="/shop/cart" className="hover:no-underline hover:text-(--secondary-color)">Carrito</Link>
