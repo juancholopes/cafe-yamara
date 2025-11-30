@@ -4,9 +4,9 @@
   --font-rethink-sans: 'Rethink Sans', sans-serif;
   --font-yeseva-one: 'Yeseva One', serif;
 
-  --font-size-base: 16px;
-  --font-size-lg: 18px;
-  --font-size-sm: 14px;
+  --font-size-base: 18px;
+  --font-size-lg: 22px;
+  --font-size-sm: 16px;
 
   --primary-color: #1D2F1D;
   --secondary-color: #a5c684;
@@ -38,22 +38,33 @@ body::-webkit-scrollbar {
   }
 
   h1 {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     margin-bottom: 1rem;
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: 2.75rem;
     margin-bottom: 0.75rem;
   }
 
   h3 {
-    font-size: 1.75rem;
+    font-size: 2.25rem;
     margin-bottom: 0.5rem;
   }
 
   h4 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     margin-bottom: 0.5rem;
   }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: fit-content;
+  animation: marquee 30s linear infinite;
 }

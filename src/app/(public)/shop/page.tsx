@@ -1,4 +1,4 @@
-import ProductCard from '@/src/components/features/shop/ProductCard';
+import ProductCard from '@/components/features/shop/ProductCard';
 
 // Datos falsos para probar el componente (Mock Data)
 const MOCK_PRODUCTS = [

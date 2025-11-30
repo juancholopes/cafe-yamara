@@ -1,4 +1,3 @@
-import Button from "@/src/components/ui/Button";
 
 export default function AboutPage() {
   return (
@@ -8,7 +7,6 @@ export default function AboutPage() {
         <h1 className="text-5xl md:text-9xl font-bold text-(--secondary-color) drop-shadow-lg">
           Sobre nosotros
         </h1>
-        <Button >Conócenos</Button>
       </div>
     </section>
   );
