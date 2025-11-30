@@ -9,15 +9,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
           {/* Column 1: Brand */}
           <div className="flex flex-col gap-6">
-            <h3 className="text-3xl font-serif">Café Yamara</h3>
-            <p className="text-lg leading-relaxed max-w-sm">
+            <h3 className="text-3xl ">Café Yamara</h3>
+            <p className="text-lg max-w-sm">
               Llevando el aroma de las montañas santandereanas al mundo.
             </p>
           </div>
-
+    
           {/* Column 2: Explore */}
           <div className="flex flex-col gap-6">
-            <h3 className="text-2xl font-serif">Explora</h3>
+            <h3 className="text-2xl">Explora</h3>
             <ul className="flex flex-col gap-4 text-lg">
               <li><Link href="/about" className="hover:opacity-80 transition-opacity">Nosotros</Link></li>
               <li><Link href="/shop" className="hover:opacity-80 transition-opacity">Tienda</Link></li>
@@ -28,7 +28,7 @@ export default function Footer() {
 
           {/* Column 3: Contact */}
           <div className="flex flex-col gap-6">
-            <h3 className="text-2xl font-serif">Contacto</h3>
+            <h3 className="text-2xl">Contacto</h3>
             <ul className="flex flex-col gap-4 text-lg">
               <li className="flex items-center gap-3">
                 <Mail size={22} />
