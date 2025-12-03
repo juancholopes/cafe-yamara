@@ -1,4 +1,4 @@
-// Componente Estructural
+
 import {Instagram, Linkedin, Facebook, Mail, Phone, MapPin} from "lucide-react";
 import Link from "next/link";
 
@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="bg-(--primary-color) text-(--text-color)">
       <div className="mx-auto max-w-7xl py-16 px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
-          {/* Column 1: Brand */}
+          
           <div className="flex flex-col gap-6">
             <h3 className="text-3xl ">Café Yamara</h3>
             <p className="text-lg max-w-sm">
@@ -15,7 +15,6 @@ export default function Footer() {
             </p>
           </div>
     
-          {/* Column 2: Explore */}
           <div className="flex flex-col gap-6">
             <h3 className="text-2xl">Explora</h3>
             <ul className="flex flex-col gap-4 text-lg">
@@ -26,7 +25,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Contact */}
           <div className="flex flex-col gap-6">
             <h3 className="text-2xl">Contacto</h3>
             <ul className="flex flex-col gap-4 text-lg">
@@ -46,7 +44,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Social Media & Copyright */}
         <div className="border-t border-[#a5c684]/30 pt-8 flex flex-col items-center gap-6">
             <div className="flex justify-center gap-8">
               <a
@@ -80,7 +77,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Scrolling Banner */}
       <div className="w-full overflow-hidden bg-[#a5c684] py-3">
         <div className="animate-marquee whitespace-nowrap">
           {[...Array(2)].map((_, i) => (

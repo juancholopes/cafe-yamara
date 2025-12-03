@@ -1,7 +1,6 @@
 
-"use client";
+"use client"
 
-// Componente Estructural
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
@@ -13,7 +12,6 @@ export default function Navbar() {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
             
-            // Ocultar al bajar (si pasamos 100px), mostrar al subir
             if (currentScrollY > lastScrollY && currentScrollY > 100) {
                 setIsVisible(false);
             } else {
