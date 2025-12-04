@@ -1,5 +1,8 @@
+"use client";
+
 import Image from 'next/image';
 import Card from '../../ui/Card';
+import { motion } from 'framer-motion';
 
 interface ProductCardProps {
   title: string;
@@ -20,14 +23,18 @@ export default function ProductCard({
     <Card className="p-0 m-0 bg-transparent w-[300px] min-h-[650px] flex flex-col">
       {/* Image Container - Top Half */}
       <div className="bg-(--secondary-color) p-8 flex justify-center items-center relative h-[300px] w-full shrink-0">
-        <div className="relative w-full h-full shadow-2xl transform hover:scale-105 transition-transform duration-300">
+        <motion.div 
+          className="relative w-full h-full shadow-2xl"
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.3 }}
+        >
              <Image
                 src={imageUrl}
                 alt={imageAlt}
                 fill
                 className="object-contain drop-shadow-xl"
              />
-        </div>
+        </motion.div>
       </div>
 
       {/* Description Container - Bottom Half */}
