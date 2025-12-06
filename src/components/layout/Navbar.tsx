@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 const navLinks = [
     { href: "/about", label: "Nosotros" },
-    { href: "/coffee-process", label: "Process" },
+    { href: "/coffee-process", label: "Proceso" },
     { href: "/shop/cart", label: "Carrito" },
     { href: "/location", label: "Sucursales" },
     { href: "/shop", label: "Tienda" },

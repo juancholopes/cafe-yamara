@@ -21,7 +21,6 @@ export default function Footer() {
               <li><Link href="/about" className="hover:opacity-80 transition-opacity">Nosotros</Link></li>
               <li><Link href="/shop" className="hover:opacity-80 transition-opacity">Tienda</Link></li>
               <li><Link href="/blog" className="hover:opacity-80 transition-opacity">Blog</Link></li>
-              <li><Link href="/recipes" className="hover:opacity-80 transition-opacity">Recetas</Link></li>
             </ul>
           </div>
 
