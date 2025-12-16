@@ -7,6 +7,8 @@ import Card from "@/components/ui/Card";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 
+import { authService } from "@/services/auth.service";
+
 export default function RegisterPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -42,15 +44,15 @@ export default function RegisterPage() {
     }
 
     try {
-      // TODO: Integrar con Supabase Auth
-      console.log("Register data:", formData);
+      await authService.register({
+        name: formData.fullName,
+        email: formData.email,
+        password: formData.password,
+      });
       
-      // Simulación de registro exitoso
-      // await supabase.auth.signUp(...)
-      
-      // router.push("/login?registered=true");
-    } catch (err) {
-      setError("Error al registrarse. Inténtalo de nuevo.");
+      router.push("/login?registered=true");
+    } catch (err: any) {
+      setError(err.message || "Error al registrarse. Inténtalo de nuevo.");
     } finally {
       setLoading(false);
     }

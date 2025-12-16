@@ -7,6 +7,8 @@ import Card from "@/components/ui/Card";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 
+import { authService } from "@/services/auth.service";
+
 export default function LoginPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -30,15 +32,11 @@ export default function LoginPage() {
     setError(null);
 
     try {
-      // TODO: Integrar con Supabase Auth
-      console.log("Login data:", formData);
-      
-      // Simulación de login exitoso
-      // await supabase.auth.signInWithPassword(...)
-      
-      // router.push("/dashboard");
-    } catch (err) {
-      setError("Error al iniciar sesión. Por favor verifica tus credenciales.");
+      await authService.login(formData);
+      router.push("/dashboard");
+      router.refresh();
+    } catch (err: any) {
+      setError(err.message || "Error al iniciar sesión. Por favor verifica tus credenciales.");
     } finally {
       setLoading(false);
     }
