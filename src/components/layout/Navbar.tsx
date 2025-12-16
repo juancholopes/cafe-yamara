@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
 const navLinks = [
@@ -18,6 +18,13 @@ export default function Navbar() {
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
     const pathname = usePathname();
+    const router = useRouter();
+
+    useEffect(() => {
+        navLinks.forEach((link) => {
+            router.prefetch(link.href);
+        });
+    }, [router]);
 
     useEffect(() => {
         const handleScroll = () => {
