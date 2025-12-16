@@ -21,6 +21,12 @@ body {
   overflow-x: hidden;
 }
 
+*::selection,
+*::-moz-selection {
+  background: var(--secondary-color);
+  color: var(--primary-color);
+}
+
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
