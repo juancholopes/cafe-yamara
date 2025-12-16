@@ -3,7 +3,7 @@
 import Button from '@/components/ui/Button';
 import { motion } from 'framer-motion';
 
-export const Welcome = () => {
+export const Hero = () => {
   return (
     <section className="flex flex-col items-center justify-center h-full w-full px-4 text-center space-y-8">
       <motion.div 
