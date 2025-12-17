@@ -7,16 +7,12 @@ export default async function ShopPage() {
   const products = await productsService.getProducts();
 
 	return (
-		<div className="flex items-center justify-center mx-auto w-full flex-1 bg-(--primary-color)">
+		<div className="flex items-center justify-center mx-auto w-full flex-1 bg-[#F5F1E8]">
 			<div className="flex flex-row flex-wrap justify-center items-center gap-12 p-8">
 				{products.map((product) => (
 					<ProductCard
 						key={product.id}
-						title={product.title}
-						cupProfile={product.cup_profile}
-						tastingNotes={product.tasting_notes}
-						imageUrl={product.image_url}
-						imageAlt={product.title}
+						product={product}
 					/>
 				))}
         {products.length === 0 && (

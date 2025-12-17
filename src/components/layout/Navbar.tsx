@@ -4,7 +4,9 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { LogIn, UserPlus, Menu, X } from "lucide-react";
+import { LogIn, UserPlus, Menu, X, ShoppingBag } from "lucide-react";
+import { useCartStore, CartState } from "@/store/useCartStore";
+import CartSummary from "../features/shop/CartSummary";
 
 const navLinks = [
     { href: "/about", label: "Nosotros" },
@@ -16,8 +18,16 @@ export default function Navbar() {
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isCartOpen, setIsCartOpen] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
+    
     const pathname = usePathname();
     const router = useRouter();
+    const cartCount = useCartStore((state: CartState) => state.getCartCount());
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
     useEffect(() => {
         navLinks.forEach((link) => {
@@ -89,6 +99,35 @@ export default function Navbar() {
 
                         {/* Desktop Actions */}
                         <div className="hidden lg:flex items-center gap-4">
+                            {/* Cart Dropdown */}
+                            <div className="relative">
+                                <button
+                                    onClick={() => setIsCartOpen(!isCartOpen)}
+                                    className="p-2 rounded text-(--text-color) hover:text-(--secondary-color) transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--secondary-color) relative"
+                                    aria-label="Carrito de compras"
+                                >
+                                    <ShoppingBag size={24} />
+                                    {isMounted && cartCount > 0 && (
+                                        <span className="absolute -top-1 -right-1 bg-[#D4AF37] text-[#2D5016] text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                                            {cartCount}
+                                        </span>
+                                    )}
+                                </button>
+
+                                <AnimatePresence>
+                                    {isCartOpen && (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: 10 }}
+                                            className="absolute right-0 top-full mt-4 z-50"
+                                        >
+                                            <CartSummary />
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </div>
+
                             <Link
                                 href="/login"
                                 aria-label="Iniciar sesión"

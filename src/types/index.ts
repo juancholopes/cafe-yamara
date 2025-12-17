@@ -35,3 +35,11 @@ export interface CreateProductDTO {
   category: string;
 }
 
+export interface PreparationStep {
+  id: number;
+  step_number: number;
+  title: string;
+  description: string;
+  icon_name?: string;
+}
+
