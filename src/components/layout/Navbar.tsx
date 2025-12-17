@@ -9,8 +9,6 @@ import { LogIn, UserPlus, Menu, X } from "lucide-react";
 const navLinks = [
     { href: "/about", label: "Nosotros" },
     { href: "/coffee-process", label: "Proceso" },
-    { href: "/shop/cart", label: "Carrito" },
-    { href: "/location", label: "Sucursales" },
     { href: "/shop", label: "Tienda" },
 ];
 
