@@ -51,8 +51,12 @@ export default function RegisterPage() {
       });
       
       router.push("/login?registered=true");
-    } catch (err: any) {
-      setError(err.message || "Error al registrarse. Inténtalo de nuevo.");
+    } catch (err: unknown) {
+      const errorMessage =
+        err instanceof Error && err.message
+          ? err.message
+          : "Error al registrarse. Inténtalo de nuevo.";
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
