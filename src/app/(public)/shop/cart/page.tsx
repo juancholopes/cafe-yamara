@@ -10,90 +10,13 @@ import { CartItem, useCartStore } from "@/store/useCartStore";
 
 type CheckoutStep = "cart" | "payment" | "success";
 
-const COLOMBIA_COUNTRY = "Colombia";
-
-const COLOMBIA_DEPARTMENTS = [
-  "Amazonas",
-  "Antioquia",
-  "Arauca",
-  "Atlántico",
-  "Bolívar",
-  "Boyacá",
-  "Caldas",
-  "Caquetá",
-  "Casanare",
-  "Cauca",
-  "Cesar",
-  "Chocó",
-  "Córdoba",
-  "Cundinamarca",
-  "Guainía",
-  "Guaviare",
-  "Huila",
-  "La Guajira",
-  "Magdalena",
-  "Meta",
-  "Nariño",
-  "Norte de Santander",
-  "Putumayo",
-  "Quindío",
-  "Risaralda",
-  "San Andrés y Providencia",
-  "Santander",
-  "Sucre",
-  "Tolima",
-  "Valle del Cauca",
-  "Vaupés",
-  "Vichada",
-  "Bogotá, D.C.",
-] as const;
-
-const MUNICIPALITIES_BY_DEPARTMENT: Record<string, string[]> = {
-  "Bogotá, D.C.": ["Bogotá"],
-  Antioquia: [
-    "Medellín",
-    "Envigado",
-    "Bello",
-    "Itagüí",
-    "Rionegro",
-    "La Ceja",
-    "Guatapé",
-  ],
-  Cundinamarca: ["Soacha", "Chía", "Zipaquirá", "Facatativá", "Girardot"],
-  Caldas: ["Manizales", "Chinchiná", "Villamaría", "La Dorada", "Salamina"],
-  Quindío: ["Armenia", "Calarcá", "Montenegro", "Quimbaya", "Circasia"],
-  Risaralda: ["Pereira", "Dosquebradas", "Santa Rosa de Cabal", "La Virginia"],
-  "Valle del Cauca": ["Cali", "Palmira", "Buenaventura", "Buga", "Tuluá"],
-  Atlántico: ["Barranquilla", "Soledad", "Puerto Colombia", "Malambo"],
-  Bolívar: ["Cartagena", "Magangué", "Turbaco", "Arjona"],
-  Santander: [
-    "Bucaramanga",
-    "Floridablanca",
-    "Girón",
-    "Piedecuesta",
-    "Barrancabermeja",
-  ],
-  Tolima: ["Ibagué", "Espinal", "Melgar", "Honda"],
-  Huila: ["Neiva", "Pitalito", "Garzón", "La Plata"],
-  Boyacá: ["Tunja", "Duitama", "Sogamoso", "Paipa"],
-  Nariño: ["Pasto", "Tumaco", "Ipiales"],
-  Cauca: ["Popayán", "Santander de Quilichao"],
-  Meta: ["Villavicencio", "Acacías"],
-  Magdalena: ["Santa Marta", "Ciénaga"],
-  Cesar: ["Valledupar", "Aguachica"],
-  Córdoba: ["Montería", "Lorica"],
-  Sucre: ["Sincelejo", "Corozal"],
-  "Norte de Santander": ["Cúcuta", "Ocaña"],
-  "La Guajira": ["Riohacha", "Maicao", "Uribia"],
-};
-
 type CheckoutFormState = {
   fullName: string;
   email: string;
   phone: string;
   address: string;
-  department: string;
-  municipality: string;
+  city: string;
+  country: string;
   cardNumber: string;
   cardExpiry: string;
   cardCvc: string;
@@ -122,8 +45,8 @@ export default function CartPage() {
     email: "",
     phone: "",
     address: "",
-    department: "",
-    municipality: "",
+    city: "",
+    country: "",
     cardNumber: "",
     cardExpiry: "",
     cardCvc: "",
@@ -148,10 +71,8 @@ export default function CartPage() {
     if (!state.fullName.trim()) nextErrors.fullName = "Ingresa tu nombre";
     if (!state.email.trim()) nextErrors.email = "Ingresa tu email";
     if (!state.address.trim()) nextErrors.address = "Ingresa tu dirección";
-    if (!state.department.trim())
-      nextErrors.department = "Selecciona tu departamento";
-    if (!state.municipality.trim())
-      nextErrors.municipality = "Selecciona tu municipio";
+    if (!state.city.trim()) nextErrors.city = "Ingresa tu ciudad";
+    if (!state.country.trim()) nextErrors.country = "Ingresa tu país";
 
     const cardDigits = sanitizeDigits(state.cardNumber);
     if (cardDigits.length < 12) nextErrors.cardNumber = "Tarjeta inválida";
@@ -237,8 +158,8 @@ export default function CartPage() {
                   email: "",
                   phone: "",
                   address: "",
-                  department: "",
-                  municipality: "",
+                  city: "",
+                  country: "",
                   cardNumber: "",
                   cardExpiry: "",
                   cardCvc: "",
@@ -428,70 +349,30 @@ export default function CartPage() {
                       error={errors.address}
                       placeholder="Calle 123 #45-67"
                     />
-
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <Input
-                        label="País"
-                        value={COLOMBIA_COUNTRY}
-                        disabled
-                        className="opacity-80"
+                        label="Ciudad"
+                        value={form.city}
+                        onChange={(e) =>
+                          setForm((s) => ({ ...s, city: e.target.value }))
+                        }
+                        error={errors.city}
+                        placeholder="Armenia"
                       />
-
-                      <div className="w-full">
-                        <Input
-                          label="Departamento"
-                          value={form.department}
-                          onChange={(e) =>
-                            setForm((s) => ({
-                              ...s,
-                              department: e.target.value,
-                              municipality:
-                                s.department === e.target.value
-                                  ? s.municipality
-                                  : "",
-                            }))
-                          }
-                          error={errors.department}
-                          placeholder="Selecciona o escribe"
-                          list="co-departments"
-                        />
-                        <datalist id="co-departments">
-                          {COLOMBIA_DEPARTMENTS.map((d) => (
-                            <option key={d} value={d} />
-                          ))}
-                        </datalist>
-                      </div>
+                      <Input
+                        label="País"
+                        value={form.country}
+                        onChange={(e) =>
+                          setForm((s) => ({ ...s, country: e.target.value }))
+                        }
+                        error={errors.country}
+                        placeholder="Colombia"
+                      />
                     </div>
-
-                    <Input
-                      label="Municipio"
-                      value={form.municipality}
-                      onChange={(e) =>
-                        setForm((s) => ({ ...s, municipality: e.target.value }))
-                      }
-                      error={errors.municipality}
-                      placeholder={
-                        form.department
-                          ? "Selecciona o escribe"
-                          : "Primero elige un departamento"
-                      }
-                      list={form.department ? "co-municipalities" : undefined}
-                      disabled={!form.department}
-                      className={!form.department ? "opacity-80" : ""}
-                    />
-
-                    {form.department ? (
-                      <datalist id="co-municipalities">
-                        {(MUNICIPALITIES_BY_DEPARTMENT[form.department] ?? []).map(
-                          (m) => (
-                            <option key={m} value={m} />
-                          )
-                        )}
-                      </datalist>
-                    ) : null}
                   </div>
 
-                  <h4 className="text-(--primary-color)">Pago (simulado)</h4>
+                  <h4 className="text-(--primary-color)">Pago
+                  </h4>
                   <div className="grid grid-cols-1 gap-3">
                     <Input
                       label="Número de tarjeta"
@@ -540,7 +421,7 @@ export default function CartPage() {
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full py-3 px-6 text-base text-(--primary-color) border-(--primary-color) bg-white/40"
+                      className="w-full py-3 px-6 text-base text-(--secondary-color) border-(--primary-color) bg-white/40"
                       onClick={() => setStep("cart")}
                       disabled={isPaying}
                     >
