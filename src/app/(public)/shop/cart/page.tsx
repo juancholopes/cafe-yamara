@@ -32,6 +32,12 @@ function sanitizeDigits(value: string) {
   return value.replace(/\D/g, "");
 }
 
+function formatCardExpiry(rawValue: string) {
+  const digits = sanitizeDigits(rawValue).slice(0, 4);
+  if (digits.length <= 2) return digits;
+  return `${digits.slice(0, 2)}/${digits.slice(2)}`;
+}
+
 export default function CartPage() {
   const { items, removeItem, updateQuantity, clearCart, getCartTotal } =
     useCartStore();
@@ -391,8 +397,14 @@ export default function CartPage() {
                       <Input
                         label="Vencimiento (MM/AA)"
                         value={form.cardExpiry}
+                        inputMode="numeric"
+                        autoComplete="cc-exp"
+                        maxLength={5}
                         onChange={(e) =>
-                          setForm((s) => ({ ...s, cardExpiry: e.target.value }))
+                          setForm((s) => ({
+                            ...s,
+                            cardExpiry: formatCardExpiry(e.target.value),
+                          }))
                         }
                         error={errors.cardExpiry}
                         placeholder="12/28"
