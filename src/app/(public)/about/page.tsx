@@ -38,18 +38,7 @@ export default function AboutPage() {
   return (
     <div className="w-full bg-[#FDFBF7] text-[#4A3B32] overflow-hidden font-sans">
       {/* 1. HERO SECTION */}
-      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-[#1D2F1D]">
-        <div className="absolute inset-0 z-0 opacity-40">
-           <Image
-            src="/coffe-head.webp" 
-            alt="Finca de Café"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#1D2F1D]" />
-        </div>
-        
+      <section className="relative h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden bg-[#1D2F1D]">
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto text-[#FDFBF7]">
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
@@ -68,17 +57,6 @@ export default function AboutPage() {
             Cada sorbo, un compromiso con la tierra
           </motion.p>
         </div>
-        
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce"
-        >
-          <div className="w-6 h-10 border-2 border-[#FDFBF7] rounded-full flex justify-center pt-2">
-            <div className="w-1 h-2 bg-[#FDFBF7] rounded-full" />
-          </div>
-        </motion.div>
       </section>
 
       {/* 2. NUESTRA HISTORIA */}
