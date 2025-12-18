@@ -2,8 +2,11 @@
 
 import Button from '@/components/ui/Button';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 export const Hero = () => {
+  const router = useRouter();
+
   return (
     <section className="flex flex-col items-center justify-center h-full w-full px-4 text-center space-y-8">
       <motion.div 
@@ -26,10 +29,10 @@ export const Hero = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        <Button>
+        <Button onClick={() => router.push('/shop')}>
           Ver Productos
         </Button>
-        <Button >
+        <Button onClick={() => router.push('/about')}>
           Nuestra Historia
         </Button>
       </motion.div>
