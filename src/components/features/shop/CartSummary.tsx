@@ -10,26 +10,37 @@ export default function CartSummary() {
 
   if (items.length === 0) {
     return (
-      <div className="p-8 text-center text-gray-500 w-80">
-        <ShoppingBag className="mx-auto mb-4 opacity-50" size={48} />
-        <p>Tu carrito está vacío</p>
+      <div className="w-80 max-w-[calc(100vw-2rem)] bg-(--card-background) rounded-2xl shadow-lg border border-(--primary-color)/10 overflow-hidden">
+        <div className="p-6 text-center text-(--primary-color)">
+          <ShoppingBag className="mx-auto mb-4 opacity-40" size={48} />
+          <p className="font-bold">Tu carrito está vacío</p>
+          <p className="mt-1 text-sm opacity-80">Agrega productos para comenzar.</p>
+        </div>
+        <div className="p-4 bg-white/30">
+          <Link
+            href="/shop"
+            className="block w-full bg-(--secondary-color) text-(--primary-color) text-center py-3 rounded-2xl font-bold hover:opacity-90 transition-opacity"
+          >
+            Ir a la tienda
+          </Link>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="w-96 bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden">
-      <div className="p-4 bg-[#2D5016] text-white flex justify-between items-center">
-        <h3 className="font-bold">Tu Carrito</h3>
-        <span className="text-sm bg-[#D4AF37] text-[#2D5016] px-2 py-0.5 rounded-full font-bold">
+    <div className="w-96 max-w-[calc(100vw-2rem)] bg-(--card-background) rounded-2xl shadow-lg border border-(--primary-color)/10 overflow-hidden">
+      <div className="p-4 bg-(--primary-color) text-(--text-color) flex justify-between items-center">
+        <h3 className="font-bold">Tu carrito</h3>
+        <span className="text-sm bg-(--secondary-color) text-(--primary-color) px-2 py-0.5 rounded-full font-bold">
           {items.length} items
         </span>
       </div>
       
       <div className="max-h-96 overflow-y-auto">
         {items.map((item: CartItem) => (
-          <div key={item.id} className="flex gap-4 p-4 border-b border-gray-100 hover:bg-gray-50 transition-colors">
-            <div className="relative w-16 h-16 shrink-0 bg-gray-100 rounded-md overflow-hidden">
+          <div key={item.id} className="flex gap-4 p-4 border-b border-(--primary-color)/10 hover:bg-white/30 transition-colors">
+            <div className="relative w-16 h-16 shrink-0 bg-white/30 rounded-xl overflow-hidden">
               <Image
                 src={item.image_url}
                 alt={item.title}
@@ -39,15 +50,15 @@ export default function CartSummary() {
             </div>
             
             <div className="flex-1 min-w-0">
-              <h4 className="font-bold text-[#2D5016] truncate">{item.title}</h4>
-              <p className="text-sm text-gray-500">
-                {item.quantity} x ${item.price.toLocaleString()}
+              <h4 className="font-bold text-(--primary-color) truncate">{item.title}</h4>
+              <p className="text-sm text-(--primary-color) opacity-80">
+                {item.quantity} x ${item.price.toLocaleString('es-CO')}
               </p>
             </div>
 
             <button
               onClick={() => removeItem(item.id)}
-              className="text-red-400 hover:text-red-600 transition-colors p-1"
+              className="text-red-600/70 hover:text-red-600 transition-colors p-1"
               aria-label="Eliminar producto"
             >
               <Trash2 size={18} />
@@ -56,17 +67,17 @@ export default function CartSummary() {
         ))}
       </div>
 
-      <div className="p-4 bg-gray-50">
+      <div className="p-4 bg-white/30">
         <div className="flex justify-between items-center mb-4">
-          <span className="text-gray-600 font-bold">Total</span>
-          <span className="text-2xl font-yeseva text-[#2D5016]">
-            ${getCartTotal().toLocaleString()}
+          <span className="text-(--primary-color) font-bold">Total</span>
+          <span className="text-2xl font-yeseva text-(--primary-color)">
+            ${getCartTotal().toLocaleString('es-CO')}
           </span>
         </div>
         
         <Link
           href="/shop/cart"
-          className="block w-full bg-[#D4AF37] text-[#2D5016] text-center py-3 rounded-lg font-bold hover:bg-[#C5A028] transition-colors"
+          className="block w-full bg-(--secondary-color) text-(--primary-color) text-center py-3 rounded-2xl font-bold hover:opacity-90 transition-opacity"
         >
           Ver Carrito Completo
         </Link>

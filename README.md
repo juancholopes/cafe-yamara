@@ -36,6 +36,13 @@ Este proyecto esta construido sobre Next.js utilizando el App Router y TypeScrip
 - **Pagos**: Stripe
 - **Fuentes**: next/font (Rethink Sans, Yeseva One)
 
+### Variables de Entorno
+
+Para ejecutar localmente y desplegar en Vercel (especialmente para que el `middleware` no falle), define estas variables:
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+
 ### Estructura de Directorios
 
 El codigo fuente se encuentra en el directorio `src/` y sigue una arquitectura modular organizada por responsabilidades:

@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { LogIn, UserPlus, Menu, X, ShoppingBag } from "lucide-react";
@@ -20,6 +20,7 @@ export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
+    const cartDropdownRef = useRef<HTMLDivElement | null>(null);
     
     const pathname = usePathname();
     const router = useRouter();
@@ -61,6 +62,35 @@ export default function Navbar() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pathname]);
 
+    useEffect(() => {
+        setIsCartOpen(false);
+    }, [pathname]);
+
+    useEffect(() => {
+        if (!isCartOpen) return;
+
+        const handlePointerDown = (event: MouseEvent | TouchEvent) => {
+            const targetNode = event.target as Node | null;
+            if (!targetNode) return;
+            if (!cartDropdownRef.current) return;
+            if (cartDropdownRef.current.contains(targetNode)) return;
+            setIsCartOpen(false);
+        };
+
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") setIsCartOpen(false);
+        };
+
+        document.addEventListener("mousedown", handlePointerDown);
+        document.addEventListener("touchstart", handlePointerDown);
+        window.addEventListener("keydown", handleKeyDown);
+        return () => {
+            document.removeEventListener("mousedown", handlePointerDown);
+            document.removeEventListener("touchstart", handlePointerDown);
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [isCartOpen]);
+
     return (
         <div className={`fixed top-0 left-0 w-full z-50 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
             <nav className="bg-(--primary-color) text-white shadow-md">
@@ -100,11 +130,12 @@ export default function Navbar() {
                         {/* Desktop Actions */}
                         <div className="hidden lg:flex items-center gap-4">
                             {/* Cart Dropdown */}
-                            <div className="relative">
+                            <div className="relative" ref={cartDropdownRef}>
                                 <button
                                     onClick={() => setIsCartOpen(!isCartOpen)}
                                     className="p-2 rounded text-(--text-color) hover:text-(--secondary-color) transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--secondary-color) relative"
                                     aria-label="Carrito de compras"
+                                    aria-expanded={isCartOpen}
                                 >
                                     <ShoppingBag size={24} />
                                     {isMounted && cartCount > 0 && (
