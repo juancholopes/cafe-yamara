@@ -23,6 +23,20 @@ export default function TestSkeletonsPage() {
         >
             Ver Skeleton Navbar
         </Link>
+
+        <Link 
+          href="/test-skeletons/about" 
+          className="px-6 py-3 bg-(--secondary-color) text-(--primary-color) font-bold rounded hover:opacity-90 transition-opacity"
+        >
+          Ver Skeleton About
+        </Link>
+
+        <Link 
+          href="/test-skeletons/coffee-process" 
+          className="px-6 py-3 bg-(--secondary-color) text-(--primary-color) font-bold rounded hover:opacity-90 transition-opacity"
+        >
+          Ver Skeleton Coffee Process
+        </Link>
       </div>
     </div>
   );
