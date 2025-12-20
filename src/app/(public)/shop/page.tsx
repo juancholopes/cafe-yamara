@@ -17,14 +17,13 @@ export default async function ShopPage() {
   const products = await productsService.getProducts();
 
 	return (
-		<div className="flex items-center justify-center mx-auto w-full flex-1 bg-[#F5F1E8]">
-			<div className="flex flex-row flex-wrap justify-center items-center gap-12 p-8">
-				{products.map((product) => (
-					<ProductCard
-						key={product.id}
-						product={product}
-					/>
-				))}
+		<div className="mx-auto w-full flex-1 bg-(--primary-color)">
+			<div className="mx-auto w-full max-w-[1440px] px-6 py-10 sm:px-8 sm:py-12 lg:px-10 lg:py-16">
+				<div className="flex flex-wrap justify-center items-start gap-8 lg:gap-10">
+					{products.map((product) => (
+						<ProductCard key={product.id} product={product} />
+					))}
+				</div>
         {products.length === 0 && (
           <div className="text-white text-center py-12">
             <p className="text-xl">No hay productos disponibles en este momento.</p>

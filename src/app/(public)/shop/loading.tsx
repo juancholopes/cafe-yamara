@@ -2,11 +2,13 @@ import ProductCardSkeleton from "@/components/skeletons/ProductCardSkeleton";
 
 export default function Loading() {
   return (
-    <div className="flex items-center justify-center mx-auto w-full flex-1 bg-(--primary-color)">
-      <div className="flex flex-row flex-wrap justify-center items-center gap-12 p-8">
-        {[...Array(10)].map((_, i) => (
-          <ProductCardSkeleton key={i} />
-        ))}
+    <div className="mx-auto w-full flex-1 bg-(--primary-color)">
+      <div className="mx-auto w-full max-w-[1440px] px-6 py-10 sm:px-8 sm:py-12 lg:px-10 lg:py-16">
+        <div className="flex flex-wrap justify-center items-start gap-8 lg:gap-10">
+          {[...Array(9)].map((_, i) => (
+            <ProductCardSkeleton key={i} />
+          ))}
+        </div>
       </div>
     </div>
   );
