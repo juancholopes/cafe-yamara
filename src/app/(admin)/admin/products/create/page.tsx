@@ -73,8 +73,9 @@ export default function CreateProductPage() {
 
       router.push('/admin/products');
       router.refresh();
-    } catch (err: any) {
-      setError(err.message || 'Error al crear el producto');
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Error al crear el producto';
+      setError(message);
     } finally {
       setIsLoading(false);
     }

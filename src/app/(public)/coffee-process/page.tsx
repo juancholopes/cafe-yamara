@@ -1,6 +1,16 @@
 import React from 'react';
 import ProcessTimeline from '@/components/features/coffee-process/ProcessTimeline';
 import type { PreparationStep } from '@/types';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Proceso del café',
+  description:
+    'Conoce el proceso artesanal de Café Yamara: cultivo, secado, tostado, molienda y extracción.',
+  alternates: {
+    canonical: '/coffee-process',
+  },
+};
 
 const steps: PreparationStep[] = [
   {

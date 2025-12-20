@@ -43,6 +43,10 @@ Para ejecutar localmente y desplegar en Vercel (especialmente para que el `middl
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 
+Opcional (recomendado para SEO en producción):
+
+- `NEXT_PUBLIC_SITE_URL` (ej: `https://tudominio.com`) — se usa para `metadataBase`, canónicos, `sitemap.xml` y `robots.txt`.
+
 ### Estructura de Directorios
 
 El codigo fuente se encuentra en el directorio `src/` y sigue una arquitectura modular organizada por responsabilidades:

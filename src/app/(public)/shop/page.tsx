@@ -1,7 +1,17 @@
 import ProductCard from '@/components/features/shop/ProductCard';
 import { productsService } from '@/services/products.service';
+import type { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+	title: 'Tienda',
+	description:
+		'Compra café de especialidad y productos de Café Yamara. Descubre perfiles de taza, notas de cata y más.',
+	alternates: {
+		canonical: '/shop',
+	},
+};
 
 export default async function ShopPage() {
   const products = await productsService.getProducts();

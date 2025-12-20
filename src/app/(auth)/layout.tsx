@@ -1,5 +1,14 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Acceso',
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function AuthLayout({
   children,
