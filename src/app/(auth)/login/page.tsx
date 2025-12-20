@@ -35,8 +35,12 @@ export default function LoginPage() {
       await authService.login(formData);
       router.push("/admin/dashboard");
       router.refresh();
-    } catch (err: any) {
-      setError(err.message || "Error al iniciar sesión. Por favor verifica tus credenciales.");
+    } catch (err: unknown) {
+      const message =
+        err instanceof Error && err.message
+          ? err.message
+          : "Error al iniciar sesión. Por favor verifica tus credenciales.";
+      setError(message);
     } finally {
       setLoading(false);
     }
