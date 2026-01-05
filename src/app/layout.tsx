@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/coffee-bag.svg",
+    icon: "/favicon.svg",
   },
   openGraph: {
     type: "website",

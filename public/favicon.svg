@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Café Yamara">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="70%">
+      <stop offset="0%" stop-color="#2b3c22"/>
+      <stop offset="100%" stop-color="#1D2F1D"/>
+    </radialGradient>
+    <linearGradient id="cup" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d7efb6"/>
+      <stop offset="100%" stop-color="#a5c684"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="64" fill="url(#bg)"/>
+
+  <!-- Steam -->
+  <path d="M276 132c18 22 10 44-8 60-18 16-18 30-6 44" fill="none" stroke="#cfe9aa" stroke-width="26" stroke-linecap="round" opacity="0.95"/>
+  <path d="M332 148c16 18 10 34-4 48-14 14-16 26-8 38" fill="none" stroke="#cfe9aa" stroke-width="22" stroke-linecap="round" opacity="0.85"/>
+
+  <!-- Cup body -->
+  <path d="M164 238c0-28 22-50 50-50h130c28 0 50 22 50 50v18c0 86-58 150-140 150S164 342 164 256v-18Z" fill="url(#cup)"/>
+
+  <!-- Coffee surface -->
+  <ellipse cx="279" cy="240" rx="94" ry="34" fill="#1D2F1D" opacity="0.9"/>
+  <ellipse cx="264" cy="234" rx="70" ry="18" fill="#2b3c22" opacity="0.7" filter="url(#soft)"/>
+
+  <!-- Handle -->
+  <path d="M394 250c34 2 62 30 62 64s-28 62-62 64h-26c16-18 26-40 26-64s-10-46-26-64h26Z" fill="url(#cup)"/>
+  <path d="M404 286c18 2 32 16 32 34s-14 32-32 34h-12c10-12 16-22 16-34s-6-22-16-34h12Z" fill="#1D2F1D" opacity="0.22"/>
+
+  <!-- Saucer -->
+  <path d="M132 412c0-18 14-32 32-32h196c46 0 88 12 118 28 10 6 14 18 10 28-4 10-14 16-26 16H164c-18 0-32-14-32-32Z" fill="#a5c684" opacity="0.55"/>
+</svg>
